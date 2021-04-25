@@ -1,0 +1,578 @@
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Employee Churn Prediction</title>
+      <!-- BootStrap -->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+      <!-- css -->
+      <link rel="stylesheet" href="static/css/styles.css">
+   </head>
+   <body>
+      <!-- As a heading -->
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+         <div class="container-fluid">
+            <div class="navbar-header">
+               <a class="navbar-brand" href="/">Employee Churn Pridiction</a>
+            </div>
+         </div>
+      </nav>
+      <br><br><br>
+      <div class="container">
+         <form action="\predict" method="post">
+            <!-- ROW 1-->
+            <div class="row">
+               <div class="col-sm-2">
+                  <div class="card">
+                     <div class="card-body">
+                        <h5 class="card-title">Age</h5>
+                        <!-- Departure -->
+                        <!-- <input type="datetime-local" name="Dep_Time" id="Dep_Time" required="required"> -->
+                        <input type="text" name="AGE" id="AGE" required="required">
+                     </div>
+                  </div>
+               </div>
+               <br>
+               <br>
+               <br>
+               <div class="col-sm-2">
+                  <div class="card">
+                     <div class="card-body">
+                        <h5 class="card-title">Daily Rate</h5>
+                        <!-- Arrival -->
+                        <input type="text" name="DAILY_RATE" id="DAILY_RATE" required="required">
+                     </div>
+                  </div>
+               </div>
+               <br>
+               <br>
+               <br>
+               <div class="col-sm-2">
+                  <div class="card">
+                     <div class="card-body">
+                        <h5 class="card-title">Hourly Rate</h5>
+                        <!-- Arrival -->
+                        <input type="text" name="HOURLY_RATE" id="HOURLY_RATE" required="required">
+                     </div>
+                  </div>
+               </div>
+               <br>
+               <br>
+               <br>
+               <div class="col-sm-2">
+                  <div class="card">
+                     <div class="card-body">
+                        <h5 class="card-title">Monthly Rate</h5>
+                        <!-- Arrival -->
+                        <input type="text" name="MONTHLY_RATE" id="MONTHLY_RATE" required="required">
+                     </div>
+                  </div>
+               </div>
+               <br>
+               <br>
+               <br>
+               <div class="col-sm-2">
+                  <div class="card">
+                     <div class="card-body">
+                        <h5 class="card-title">Total Wroking Years</h5>
+                        <!-- Arrival -->
+                        <input type="text" name="TOT_WORK_YEARS" id="TOT_WORK_YEARS" required="required">
+                     </div>
+                  </div>
+               </div>
+               <br>
+               <br>
+               <br>
+               <div class="col-sm-2">
+                  <div class="card">
+                     <div class="card-body">
+                        <h5 class="card-title">Years at comany</h5>
+                        <!-- Arrival -->
+                        <input type="text" name="YEAR_AT_COMP" id="YEAR_AT_COMP" required="required">
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <!-- ROW 2-->  
+            <div class="row">
+               <div class="col-sm-2">
+                  <div class="card">
+                     <div class="card-body">
+                        <!-- Source -->
+                        <h5 class="card-title">Business Travel</h5>
+                        <select name="Source" id="Source" required="required">
+                           <option value="FREQUENTLY">Frequently</option>
+                           <option value="RARELY">Rarely</option>
+                        </select>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-2">
+                  <div class="card">
+                     <div class="card-body">
+                        <h5 class="card-title">Department</h5>
+                        <!-- Destination -->
+                        <select name="DEPARTMENT" id="DEPARTMENT" required="required">
+                           <option value="R_D">R & D</option>
+                           <option value="SALES">Sales</option>
+                        </select>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-2">
+                  <div class="card">
+                     <div class="card-body">
+                        <!-- Source -->
+                        <h5 class="card-title">Education</h5>
+                        <select name="EDUCATION" id="EDUCATION" required="required">
+                           <option value="LIFE_SCIENCES">Life Sciences</option>
+                           <option value="MARKETING">Marketing</option>
+                           <option value="MEDICAL">Medical</option>
+                           <option value="TECHNICAL">Technical Degree</option>
+                           <option value="OTHER">Other</option>
+                        </select>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-2">
+                  <div class="card">
+                     <div class="card-body">
+                        <h5 class="card-title">Gender</h5>
+                        <!-- Destination -->
+                        <select name="GENDER" id="GENDER" required="required">
+                           <option value="MALE">Male</option>
+                           <option value="FEMALE">Female</option>
+                        </select>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-2">
+                  <div class="card">
+                     <div class="card-body">
+                        <!-- Source -->
+                        <h5 class="card-title">Job Role</h5>
+                        <select name="JOB_ROLE" id="JOB_ROLE" required="required">
+                           <option value="HUMAN_RESOURCE">Human Resource</option>
+                           <option value="LAB_TECH">Lab Technician</option>
+                           <option value="MANAGER">Manager</option>
+                           <option value="MANUF_DIRECTOR">Manufacture Director</option>
+                           <option value="RESEARCH_DIRECTOR">Research Dir.</option>
+                           <option value="RESEARCH_SCINTIST">Research Scientist</option>
+                           <option value="SALES_EXEC">Sales Executive</option>
+                           <option value="SALES_REP">Sales Representative</option>
+                        </select>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-2">
+                  <div class="card">
+                     <div class="card-body">
+                        <h5 class="card-title">Marital Status</h5>
+                        <!-- Destination -->
+                        <select name="MARITAL_STATUS" id="MARITAL_STATUS" required="required">
+                           <option value="SINGLE">Single</option>
+                           <option value="MARRIED">MArried</option>
+                        </select>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <!--ROW 3 -->
+            <div class="row">
+               <div class="col-sm-2">
+                  <div class="card">
+                     <div class="card-body">
+                        <h5 class="card-title">Overtime</h5>
+                        <!-- Total Stops -->
+                        <select name="OVERTIME" id ="OVERTIME" required="required">
+                           <option value="0">Yes</option>
+                           <option value="1">No</option>
+                        </select>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-2">
+                  <div class="card">
+                     <div class="card-body">
+                        <h5 class="card-title">Education</h5>
+                        <!-- Airline -->
+                        <select name="EDUCATION" id="EDUCATION" required="required">
+                           <option value="0">EDUCATION1</option>
+                           <option value="1">EDUCATION2</option>
+                           <option value="2">EDUCATION3</option>
+                           <option value="3">EDUCATION4</option>
+                           <option value="4">EDUCATION5</option>
+                        </select>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-2">
+                  <div class="card">
+                     <div class="card-body">
+                        <h5 class="card-title">Env Satisfaction</h5>
+                        <!-- Total Stops -->
+                        <select name="ENV_SATISFACTION" id ="ENV_SATISFACTION" required="required">
+                           <option value="0">0</option>
+                           <option value="1">1</option>
+                           <option value="2">2</option>
+                           <option value="3">3</option>
+                        </select>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-2">
+                  <div class="card">
+                     <div class="card-body">
+                        <h5 class="card-title">Job Involvment</h5>
+                        <!-- Airline -->
+                        <select name="EDUCATION" id="EDUCATION" required="required">
+                           <option value="0">0</option>
+                           <option value="1">1</option>
+                           <option value="2">2</option>
+                           <option value="3">3</option>
+                           <option value="4">4</option>
+                        </select>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-2">
+                  <div class="card">
+                     <div class="card-body">
+                        <h5 class="card-title">Job Level</h5>
+                        <!-- Total Stops -->
+                        <select name="JOB_LEVEL" id ="JOB_LEVEL" required="required">
+                           <option value="0">0</option>
+                           <option value="1">1</option>
+                           <option value="2">2</option>
+                           <option value="3">3</option>
+                           <option value="4">4</option>
+                        </select>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-2">
+                  <div class="card">
+                     <div class="card-body">
+                        <h5 class="card-title">Job Satisfaction</h5>
+                        <!-- Airline -->
+                        <select name="JOB_SATISFY" id="JOB_SATISFY" required="required">
+                           <option value="0">0</option>
+                           <option value="1">1</option>
+                           <option value="2">2</option>
+                           <option value="3">3</option>
+                           <option value="4">4</option>
+                        </select>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <!--ROW 4 -->
+            <div class="row">
+               <div class="col-sm-2">
+                  <div class="card">
+                     <div class="card-body">
+                        <h5 class="card-title">Companies Worked</h5>
+                        <!-- Total Stops -->
+                        <select name="COMP_WROK" id ="COMP_WROK" required="required">
+                           <option value="1">1</option>
+                           <option value="2">2</option>
+                           <option value="3">3</option>
+                           <option value="4">4</option>
+                           <option value="5">5</option>
+                           <option value="6">6</option>
+                           <option value="7">7</option>
+                           <option value="8">8</option>
+                           <option value="9">9</option>
+                        </select>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-2">
+                  <div class="card">
+                     <div class="card-body">
+                        <h5 class="card-title">Hike Percentage</h5>
+                        <!-- Airline -->
+                        <select name="HIKE_PERCENT" id="HIKE_PERCENT" required="required">
+                           <option value="12">12</option>
+                           <option value="14">14</option>
+                           <option value="16">16</option>
+                           <option value="18">18</option>
+                           <option value="20">20</option>
+                           <option value="22">22</option>
+                           <option value="24">24</option>
+                        </select>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-2">
+                  <div class="card">
+                     <div class="card-body">
+                        <h5 class="card-title">Performance Rating</h5>
+                        <!-- Total Stops -->
+                        <select name="PERF_RATE" id ="PERF_RATE" required="required">
+                           <option value="0">0</option>
+                           <option value="1">1</option>
+                           <option value="2">2</option>
+                           <option value="3">3</option>
+                        </select>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-2">
+                  <div class="card">
+                     <div class="card-body">
+                        <h5 class="card-title">Relationship Satisfaction</h5>
+                        <!-- Airline -->
+                        <select name="RELATION_SATISFY" id="RELATION_SATISFY" required="required">
+                           <option value="0">0</option>
+                           <option value="1">1</option>
+                           <option value="2">2</option>
+                           <option value="3">3</option>
+                           <option value="4">4</option>
+                        </select>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-2">
+                  <div class="card">
+                     <div class="card-body">
+                        <h5 class="card-title">Stock Option level</h5>
+                        <!-- Total Stops -->
+                        <select name="STOCK_OPT_LVL" id ="STOCK_OPT_LVL" required="required">
+                           <option value="0">0</option>
+                           <option value="1">1</option>
+                           <option value="2">2</option>
+                           <option value="3">3</option>
+                        </select>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-2">
+                  <div class="card">
+                     <div class="card-body">
+                        <h5 class="card-title">Last Time Training</h5>
+                        <!-- Airline -->
+                        <select name="LAST_TRAINING_TIME" id="LAST_TRAINING_TIME" required="required">
+                           <option value="0">0</option>
+                           <option value="1">1</option>
+                           <option value="2">2</option>
+                           <option value="3">3</option>
+                           <option value="4">4</option>
+                           <option value="5">5</option>
+                        </select>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <!--ROW 5 -->
+            <div class="row">
+               <div class="col-sm-2">
+                  <div class="card">
+                     <div class="card-body">
+                        <h5 class="card-title">Companies Worked</h5>
+                        <!-- Total Stops -->
+                        <select name="COMP_WROK" id ="COMP_WROK" required="required">
+                           <option value="1">1</option>
+                           <option value="2">2</option>
+                           <option value="3">3</option>
+                           <option value="4">4</option>
+                           <option value="5">5</option>
+                           <option value="6">6</option>
+                           <option value="7">7</option>
+                           <option value="8">8</option>
+                           <option value="9">9</option>
+                        </select>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-2">
+                  <div class="card">
+                     <div class="card-body">
+                        <h5 class="card-title">Hike Percentage</h5>
+                        <!-- Airline -->
+                        <select name="HIKE_PERCENT" id="HIKE_PERCENT" required="required">
+                           <option value="12">12</option>
+                           <option value="14">14</option>
+                           <option value="16">16</option>
+                           <option value="18">18</option>
+                           <option value="20">20</option>
+                           <option value="22">22</option>
+                           <option value="24">24</option>
+                        </select>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-2">
+                  <div class="card">
+                     <div class="card-body">
+                        <h5 class="card-title">Performance Rating</h5>
+                        <!-- Total Stops -->
+                        <select name="PERF_RATE" id ="PERF_RATE" required="required">
+                           <option value="0">0</option>
+                           <option value="1">1</option>
+                           <option value="2">2</option>
+                           <option value="3">3</option>
+                        </select>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-2">
+                  <div class="card">
+                     <div class="card-body">
+                        <h5 class="card-title">Relationship Satisfaction</h5>
+                        <!-- Airline -->
+                        <select name="RELATION_SATISFY" id="RELATION_SATISFY" required="required">
+                           <option value="0">0</option>
+                           <option value="1">1</option>
+                           <option value="2">2</option>
+                           <option value="3">3</option>
+                           <option value="4">4</option>
+                        </select>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-2">
+                  <div class="card">
+                     <div class="card-body">
+                        <h5 class="card-title">Stock Option level</h5>
+                        <!-- Total Stops -->
+                        <select name="STOCK_OPT_LVL" id ="STOCK_OPT_LVL" required="required">
+                           <option value="0">0</option>
+                           <option value="1">1</option>
+                           <option value="2">2</option>
+                           <option value="3">3</option>
+                        </select>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-2">
+                  <div class="card">
+                     <div class="card-body">
+                        <h5 class="card-title">Last Time Training</h5>
+                        <!-- Airline -->
+                        <select name="LAST_TRAINING_TIME" id="LAST_TRAINING_TIME" required="required">
+                           <option value="0">0</option>
+                           <option value="1">1</option>
+                           <option value="2">2</option>
+                           <option value="3">3</option>
+                           <option value="4">4</option>
+                           <option value="5">5</option>
+                        </select>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <!--ROW 6 -->
+            <div class="row">
+               <div class="col-sm-2">
+                  <div class="card">
+                     <div class="card-body">
+                        <h5 class="card-title">Work life balance</h5>
+                        <!-- Total Stops -->
+                        <select name="WORK_LIF_BAL" id ="WORK_LIF_BAL" required="required">
+                           <option value="1">1</option>
+                           <option value="2">2</option>
+                           <option value="3">3</option>
+                           <option value="4">4</option>                           
+                        </select>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-2">
+                  <div class="card">
+                     <div class="card-body">
+                        <h5 class="card-title">Years in current role</h5>
+                        <!-- Airline -->
+                        <select name="YRS_CURR_ROLE" id="YRS_CURR_ROLE" required="required">
+                           <option value="2">2</option>
+                           <option value="4">4</option>
+                           <option value="6">6</option>
+                           <option value="8">8</option>
+                           <option value="10">10</option>
+                           <option value="12">12</option>
+                           <option value="14">14</option>
+                           <option value="16">16</option>
+                           <option value="18">18</option>
+                        </select>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-2">
+                  <div class="card">
+                     <div class="card-body">
+                        <h5 class="card-title">Years since last promotion</h5>
+                        <!-- Total Stops -->
+                        <select name="YR_LAST_PROMOTION" id ="YR_LAST_PROMOTION" required="required">
+                           <option value="2">2</option>
+                           <option value="4">4</option>
+                           <option value="6">6</option>
+                           <option value="8">8</option>
+                           <option value="10">10</option>
+                           <option value="12">12</option>
+                           <option value="14">14</option>
+                           <option value="16">16</option>
+                        </select>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-2">
+                  <div class="card">
+                     <div class="card-body">
+                        <h5 class="card-title">Years with curr Mgr</h5>
+                        <!-- Airline -->
+                        <select name="YRS_CURR_MGR" id="YRS_CURR_MGR" required="required">
+                           <option value="2">2</option>
+                           <option value="4">4</option>
+                           <option value="6">6</option>
+                           <option value="8">8</option>
+                           <option value="10">10</option>
+                           <option value="12">12</option>
+                           <option value="14">14</option>
+                           <option value="16">16</option>
+                           <option value="18">18</option>
+                        </select>
+                     </div>
+                  </div>
+               </div>               
+            </div>
+            <br>
+            <br>
+            <br>
+            <!-- Submit -->
+            <button type="submit" value="Submit" class="btn btn-secondary">Submit</button>
+         </form>
+         <br>
+         <br>
+         <h3>{{ prediction_text }}</h3>
+         <br>
+         <br>
+         <p>©2021 Shivam Gupta & Akhil Shrivastava. Tribute to CORONA Warriors!</p>
+      </div>
+      <!-- JavaScript -->
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+         crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+         crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+         crossorigin="anonymous"></script>
+   </body>
+</html>

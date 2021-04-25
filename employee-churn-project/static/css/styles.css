@@ -1,0 +1,33 @@
+body {
+    background-color: #e1f4f3;
+    text-align: center;
+}
+
+.navbar {
+    background-color: #333333;
+}
+
+a {
+    color: #f1f9f9;
+}
+
+a:hover {
+    color: #f0f0f0;
+  }
+  
+.card{
+min-height: 150px;
+} 
+.textarea {
+    max-width: 50%;
+} 
+input {
+  padding: 0.2em; 
+  box-sizing: border-box;
+  width: 100% 
+} 
+select {
+  padding: 0.2em; 
+  box-sizing: border-box;
+  width: 100% 
+} 
