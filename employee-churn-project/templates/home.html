@@ -26,6 +26,14 @@
                <div class="col-sm-2">
                   <div class="card">
                      <div class="card-body">
+                        <h5 class="card-title">Employee ID</h5>
+                        <input type="text" name="EMPLOYEE_ID" id="EMPLOYEE_ID" required="required">
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-2">
+                  <div class="card">
+                     <div class="card-body">
                         <h5 class="card-title">Age</h5>
                         <!-- Departure -->
                         <!-- <input type="datetime-local" name="Dep_Time" id="Dep_Time" required="required"> -->
@@ -39,9 +47,9 @@
                <div class="col-sm-2">
                   <div class="card">
                      <div class="card-body">
-                        <h5 class="card-title">Daily Rate</h5>
+                        <h5 class="card-title">Distance from home</h5>
                         <!-- Arrival -->
-                        <input type="text" name="DAILY_RATE" id="DAILY_RATE" required="required">
+                        <input type="text" name="DISTANCE_FROM_HOME" id="DISTANCE_FROM_HOME" required="required">
                      </div>
                   </div>
                </div>
@@ -51,9 +59,9 @@
                <div class="col-sm-2">
                   <div class="card">
                      <div class="card-body">
-                        <h5 class="card-title">Hourly Rate</h5>
+                        <h5 class="card-title">Monthly Income</h5>
                         <!-- Arrival -->
-                        <input type="text" name="HOURLY_RATE" id="HOURLY_RATE" required="required">
+                        <input type="text" name="MONTHLY_INCOME" id="MONTHLY_INCOME" required="required">
                      </div>
                   </div>
                </div>
@@ -63,9 +71,9 @@
                <div class="col-sm-2">
                   <div class="card">
                      <div class="card-body">
-                        <h5 class="card-title">Monthly Rate</h5>
+                        <h5 class="card-title">Total working years</h5>
                         <!-- Arrival -->
-                        <input type="text" name="MONTHLY_RATE" id="MONTHLY_RATE" required="required">
+                        <input type="text" name="TOTAL_WORKING_YEARS" id="TOTAL_WORKING_YEARS" required="required">
                      </div>
                   </div>
                </div>
@@ -75,24 +83,15 @@
                <div class="col-sm-2">
                   <div class="card">
                      <div class="card-body">
-                        <h5 class="card-title">Total Wroking Years</h5>
+                        <h5 class="card-title">Years at company</h5>
                         <!-- Arrival -->
-                        <input type="text" name="TOT_WORK_YEARS" id="TOT_WORK_YEARS" required="required">
+                        <input type="text" name="YEARS_AT_COMPANY" id="YEARS_AT_COMPANY" required="required">
                      </div>
                   </div>
                </div>
                <br>
                <br>
-               <br>
-               <div class="col-sm-2">
-                  <div class="card">
-                     <div class="card-body">
-                        <h5 class="card-title">Years at comany</h5>
-                        <!-- Arrival -->
-                        <input type="text" name="YEAR_AT_COMP" id="YEAR_AT_COMP" required="required">
-                     </div>
-                  </div>
-               </div>
+               <br>               
             </div>
             <br>
             <br>
@@ -104,7 +103,7 @@
                      <div class="card-body">
                         <!-- Source -->
                         <h5 class="card-title">Business Travel</h5>
-                        <select name="Source" id="Source" required="required">
+                        <select name="BUSINESSTRAVEL_TRAVEL" id="BUSINESSTRAVEL_TRAVEL" required="required">
                            <option value="FREQUENTLY">Frequently</option>
                            <option value="RARELY">Rarely</option>
                         </select>
@@ -127,13 +126,13 @@
                   <div class="card">
                      <div class="card-body">
                         <!-- Source -->
-                        <h5 class="card-title">Education</h5>
-                        <select name="EDUCATION" id="EDUCATION" required="required">
-                           <option value="LIFE_SCIENCES">Life Sciences</option>
-                           <option value="MARKETING">Marketing</option>
-                           <option value="MEDICAL">Medical</option>
-                           <option value="TECHNICAL">Technical Degree</option>
-                           <option value="OTHER">Other</option>
+                        <h5 class="card-title">Education field</h5>
+                        <select name="EDUCATION_FIELD" id="EDUCATION_FIELD" required="required">
+                           <option value="EducationField_LifeSciences">Life Sciences</option>
+                           <option value="EducationField_Marketing">Marketing</option>
+                           <option value="EducationField_Medical">Medical</option>
+                           <option value="EducationField_Other">Technical Degree</option>
+                           <option value="EducationField_TechnicalDegree">Other</option>
                         </select>
                      </div>
                   </div>
@@ -155,7 +154,7 @@
                      <div class="card-body">
                         <!-- Source -->
                         <h5 class="card-title">Job Role</h5>
-                        <select name="JOB_ROLE" id="JOB_ROLE" required="required">
+                        <select name="JOBROLE" id="JOBROLE" required="required">
                            <option value="HUMAN_RESOURCE">Human Resource</option>
                            <option value="LAB_TECH">Lab Technician</option>
                            <option value="MANAGER">Manager</option>
@@ -173,9 +172,9 @@
                      <div class="card-body">
                         <h5 class="card-title">Marital Status</h5>
                         <!-- Destination -->
-                        <select name="MARITAL_STATUS" id="MARITAL_STATUS" required="required">
-                           <option value="SINGLE">Single</option>
-                           <option value="MARRIED">MArried</option>
+                        <select name="MARITALSTATUS" id="MARITALSTATUS" required="required">
+                           <option value="MaritalStatus_Single">Single</option>
+                           <option value="MaritalStatus_Married">Married</option>
                         </select>
                      </div>
                   </div>
@@ -201,43 +200,14 @@
                <div class="col-sm-2">
                   <div class="card">
                      <div class="card-body">
+                        <!-- Source -->
                         <h5 class="card-title">Education</h5>
-                        <!-- Airline -->
                         <select name="EDUCATION" id="EDUCATION" required="required">
-                           <option value="0">EDUCATION1</option>
-                           <option value="1">EDUCATION2</option>
-                           <option value="2">EDUCATION3</option>
-                           <option value="3">EDUCATION4</option>
-                           <option value="4">EDUCATION5</option>
-                        </select>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-sm-2">
-                  <div class="card">
-                     <div class="card-body">
-                        <h5 class="card-title">Env Satisfaction</h5>
-                        <!-- Total Stops -->
-                        <select name="ENV_SATISFACTION" id ="ENV_SATISFACTION" required="required">
-                           <option value="0">0</option>
-                           <option value="1">1</option>
-                           <option value="2">2</option>
-                           <option value="3">3</option>
-                        </select>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-sm-2">
-                  <div class="card">
-                     <div class="card-body">
-                        <h5 class="card-title">Job Involvment</h5>
-                        <!-- Airline -->
-                        <select name="EDUCATION" id="EDUCATION" required="required">
-                           <option value="0">0</option>
-                           <option value="1">1</option>
-                           <option value="2">2</option>
-                           <option value="3">3</option>
-                           <option value="4">4</option>
+                           <option value="LIFE_SCIENCES">Life Sciences</option>
+                           <option value="MARKETING">Marketing</option>
+                           <option value="MEDICAL">Medical</option>
+                           <option value="TECHNICAL">Technical Degree</option>
+                           <option value="OTHER">Other</option>
                         </select>
                      </div>
                   </div>
@@ -262,7 +232,7 @@
                      <div class="card-body">
                         <h5 class="card-title">Job Satisfaction</h5>
                         <!-- Airline -->
-                        <select name="JOB_SATISFY" id="JOB_SATISFY" required="required">
+                        <select name="JOB_SATISFACTION" id="JOB_SATISFACTION" required="required">
                            <option value="0">0</option>
                            <option value="1">1</option>
                            <option value="2">2</option>
@@ -272,18 +242,12 @@
                      </div>
                   </div>
                </div>
-            </div>
-            <br>
-            <br>
-            <br>
-            <!--ROW 4 -->
-            <div class="row">
                <div class="col-sm-2">
                   <div class="card">
                      <div class="card-body">
                         <h5 class="card-title">Companies Worked</h5>
                         <!-- Total Stops -->
-                        <select name="COMP_WROK" id ="COMP_WROK" required="required">
+                        <select name="COMPANIES_WROKED" id ="COMPANIES_WROKED" required="required">
                            <option value="1">1</option>
                            <option value="2">2</option>
                            <option value="3">3</option>
@@ -300,256 +264,75 @@
                <div class="col-sm-2">
                   <div class="card">
                      <div class="card-body">
-                        <h5 class="card-title">Hike Percentage</h5>
-                        <!-- Airline -->
-                        <select name="HIKE_PERCENT" id="HIKE_PERCENT" required="required">
-                           <option value="12">12</option>
-                           <option value="14">14</option>
-                           <option value="16">16</option>
-                           <option value="18">18</option>
-                           <option value="20">20</option>
-                           <option value="22">22</option>
-                           <option value="24">24</option>
-                        </select>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-sm-2">
-                  <div class="card">
-                     <div class="card-body">
                         <h5 class="card-title">Performance Rating</h5>
                         <!-- Total Stops -->
-                        <select name="PERF_RATE" id ="PERF_RATE" required="required">
+                        <select name="PERFORMANCE_RATE" id ="PERFORMANCE_RATE" required="required">
                            <option value="0">0</option>
                            <option value="1">1</option>
                            <option value="2">2</option>
                            <option value="3">3</option>
-                        </select>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-sm-2">
-                  <div class="card">
-                     <div class="card-body">
-                        <h5 class="card-title">Relationship Satisfaction</h5>
-                        <!-- Airline -->
-                        <select name="RELATION_SATISFY" id="RELATION_SATISFY" required="required">
-                           <option value="0">0</option>
-                           <option value="1">1</option>
-                           <option value="2">2</option>
-                           <option value="3">3</option>
-                           <option value="4">4</option>
-                        </select>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-sm-2">
-                  <div class="card">
-                     <div class="card-body">
-                        <h5 class="card-title">Stock Option level</h5>
-                        <!-- Total Stops -->
-                        <select name="STOCK_OPT_LVL" id ="STOCK_OPT_LVL" required="required">
-                           <option value="0">0</option>
-                           <option value="1">1</option>
-                           <option value="2">2</option>
-                           <option value="3">3</option>
-                        </select>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-sm-2">
-                  <div class="card">
-                     <div class="card-body">
-                        <h5 class="card-title">Last Time Training</h5>
-                        <!-- Airline -->
-                        <select name="LAST_TRAINING_TIME" id="LAST_TRAINING_TIME" required="required">
-                           <option value="0">0</option>
-                           <option value="1">1</option>
-                           <option value="2">2</option>
-                           <option value="3">3</option>
-                           <option value="4">4</option>
-                           <option value="5">5</option>
                         </select>
                      </div>
                   </div>
                </div>
             </div>
-            <br>
-            <br>
-            <br>
-            <!--ROW 5 -->
-            <div class="row">
-               <div class="col-sm-2">
-                  <div class="card">
-                     <div class="card-body">
-                        <h5 class="card-title">Companies Worked</h5>
-                        <!-- Total Stops -->
-                        <select name="COMP_WROK" id ="COMP_WROK" required="required">
-                           <option value="1">1</option>
-                           <option value="2">2</option>
-                           <option value="3">3</option>
-                           <option value="4">4</option>
-                           <option value="5">5</option>
-                           <option value="6">6</option>
-                           <option value="7">7</option>
-                           <option value="8">8</option>
-                           <option value="9">9</option>
-                        </select>
+               <br>
+               <br>
+               <br>
+               <!--ROW 4 -->
+               <div class="row">
+                  <div class="col-sm-2">
+                     <div class="card">
+                        <div class="card-body">
+                           <h5 class="card-title">Work life balance</h5>
+                           <!-- Total Stops -->
+                           <select name="WORK_LIFE_BALANCE" id ="WORK_LIFE_BALANCE" required="required">
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                           </select>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-sm-2">
+                     <div class="card">
+                        <div class="card-body">
+                           <h5 class="card-title">Years in current role</h5>
+                           <!-- Airline -->
+                           <select name="YEARS_IN_CURRENT_ROLE" id="YEARS_IN_CURRENT_ROLE" required="required">
+                              <option value="2">2</option>
+                              <option value="4">4</option>
+                              <option value="6">6</option>
+                              <option value="8">8</option>
+                              <option value="10">10</option>
+                              <option value="12">12</option>
+                              <option value="14">14</option>
+                              <option value="16">16</option>
+                              <option value="18">18</option>
+                           </select>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-sm-2">
+                     <div class="card">
+                        <div class="card-body">
+                           <h5 class="card-title">Years since last promotion</h5>
+                           <!-- Total Stops -->
+                           <select name="YEARS_SINCE_LAST_PROMOTION" id ="YEARS_SINCE_LAST_PROMOTION" required="required">
+                              <option value="2">2</option>
+                              <option value="4">4</option>
+                              <option value="6">6</option>
+                              <option value="8">8</option>
+                              <option value="10">10</option>
+                              <option value="12">12</option>
+                              <option value="14">14</option>
+                              <option value="16">16</option>
+                           </select>
+                        </div>
                      </div>
                   </div>
                </div>
-               <div class="col-sm-2">
-                  <div class="card">
-                     <div class="card-body">
-                        <h5 class="card-title">Hike Percentage</h5>
-                        <!-- Airline -->
-                        <select name="HIKE_PERCENT" id="HIKE_PERCENT" required="required">
-                           <option value="12">12</option>
-                           <option value="14">14</option>
-                           <option value="16">16</option>
-                           <option value="18">18</option>
-                           <option value="20">20</option>
-                           <option value="22">22</option>
-                           <option value="24">24</option>
-                        </select>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-sm-2">
-                  <div class="card">
-                     <div class="card-body">
-                        <h5 class="card-title">Performance Rating</h5>
-                        <!-- Total Stops -->
-                        <select name="PERF_RATE" id ="PERF_RATE" required="required">
-                           <option value="0">0</option>
-                           <option value="1">1</option>
-                           <option value="2">2</option>
-                           <option value="3">3</option>
-                        </select>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-sm-2">
-                  <div class="card">
-                     <div class="card-body">
-                        <h5 class="card-title">Relationship Satisfaction</h5>
-                        <!-- Airline -->
-                        <select name="RELATION_SATISFY" id="RELATION_SATISFY" required="required">
-                           <option value="0">0</option>
-                           <option value="1">1</option>
-                           <option value="2">2</option>
-                           <option value="3">3</option>
-                           <option value="4">4</option>
-                        </select>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-sm-2">
-                  <div class="card">
-                     <div class="card-body">
-                        <h5 class="card-title">Stock Option level</h5>
-                        <!-- Total Stops -->
-                        <select name="STOCK_OPT_LVL" id ="STOCK_OPT_LVL" required="required">
-                           <option value="0">0</option>
-                           <option value="1">1</option>
-                           <option value="2">2</option>
-                           <option value="3">3</option>
-                        </select>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-sm-2">
-                  <div class="card">
-                     <div class="card-body">
-                        <h5 class="card-title">Last Time Training</h5>
-                        <!-- Airline -->
-                        <select name="LAST_TRAINING_TIME" id="LAST_TRAINING_TIME" required="required">
-                           <option value="0">0</option>
-                           <option value="1">1</option>
-                           <option value="2">2</option>
-                           <option value="3">3</option>
-                           <option value="4">4</option>
-                           <option value="5">5</option>
-                        </select>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <br>
-            <br>
-            <br>
-            <!--ROW 6 -->
-            <div class="row">
-               <div class="col-sm-2">
-                  <div class="card">
-                     <div class="card-body">
-                        <h5 class="card-title">Work life balance</h5>
-                        <!-- Total Stops -->
-                        <select name="WORK_LIF_BAL" id ="WORK_LIF_BAL" required="required">
-                           <option value="1">1</option>
-                           <option value="2">2</option>
-                           <option value="3">3</option>
-                           <option value="4">4</option>                           
-                        </select>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-sm-2">
-                  <div class="card">
-                     <div class="card-body">
-                        <h5 class="card-title">Years in current role</h5>
-                        <!-- Airline -->
-                        <select name="YRS_CURR_ROLE" id="YRS_CURR_ROLE" required="required">
-                           <option value="2">2</option>
-                           <option value="4">4</option>
-                           <option value="6">6</option>
-                           <option value="8">8</option>
-                           <option value="10">10</option>
-                           <option value="12">12</option>
-                           <option value="14">14</option>
-                           <option value="16">16</option>
-                           <option value="18">18</option>
-                        </select>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-sm-2">
-                  <div class="card">
-                     <div class="card-body">
-                        <h5 class="card-title">Years since last promotion</h5>
-                        <!-- Total Stops -->
-                        <select name="YR_LAST_PROMOTION" id ="YR_LAST_PROMOTION" required="required">
-                           <option value="2">2</option>
-                           <option value="4">4</option>
-                           <option value="6">6</option>
-                           <option value="8">8</option>
-                           <option value="10">10</option>
-                           <option value="12">12</option>
-                           <option value="14">14</option>
-                           <option value="16">16</option>
-                        </select>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-sm-2">
-                  <div class="card">
-                     <div class="card-body">
-                        <h5 class="card-title">Years with curr Mgr</h5>
-                        <!-- Airline -->
-                        <select name="YRS_CURR_MGR" id="YRS_CURR_MGR" required="required">
-                           <option value="2">2</option>
-                           <option value="4">4</option>
-                           <option value="6">6</option>
-                           <option value="8">8</option>
-                           <option value="10">10</option>
-                           <option value="12">12</option>
-                           <option value="14">14</option>
-                           <option value="16">16</option>
-                           <option value="18">18</option>
-                        </select>
-                     </div>
-                  </div>
-               </div>               
             </div>
             <br>
             <br>
