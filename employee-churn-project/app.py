@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 from flask import Flask, request, render_template
 import joblib
+import pickle
 
 app = Flask(__name__)
 
@@ -22,9 +23,8 @@ def home():
 def predict():
     global df
     
-#   input_features = [int(x) for x in request.form.values()]
-    #input_features = [x for x in request.form.values()]
-    #print(request.form.values())
+    #input_features = [int(x) for x in request.form.values()]
+    print(request.form)
     #capturing features
     EMPLOYEE_ID = request.form['EMPLOYEE_ID']
     
@@ -41,16 +41,27 @@ def predict():
     #end region continuous variables 
     
     
-    print(Age)
+    #print(Age)
     
     #region continuous variables
-    BUSINESSTRAVEL_TRAVEL = request.form['BUSINESSTRAVEL_TRAVEL']
+    BUSINESSTRAVEL_TRAVEL = request.form['BUSINESSTRAVEL_TRAVEL']    
     BusinessTravel_Travel_Rarely=0
     BusinessTravel_Travel_Frequently=0
+    if BUSINESSTRAVEL_TRAVEL== "FREQUENTLY":
+        BusinessTravel_Travel_Frequently=1
+        print(BUSINESSTRAVEL_TRAVEL)
+    else:
+        BusinessTravel_Travel_Rarely=1
+        print(BUSINESSTRAVEL_TRAVEL)
     
-    DEPARTMENT = request.form['DEPARTMENT']    
+    
+    DEPARTMENT = request.form['DEPARTMENT']  
     Department_ResearchDevelopment=0
     Department_Sales=0
+    if DEPARTMENT== "R_D":
+        Department_ResearchDevelopment=1        
+    else:
+        Department_Sales=1        
     
     
     EDUCATION_FIELD = request.form['EDUCATION_FIELD']
@@ -59,10 +70,24 @@ def predict():
     EducationField_Medical=0
     EducationField_Other=0
     EducationField_TechnicalDegree=0
+    if EDUCATION_FIELD== "EducationField_LifeSciences":
+        EducationField_LifeSciences=1        
+    elif EDUCATION_FIELD== "EducationField_Marketing":
+        EducationField_Marketing=1 
+    elif EDUCATION_FIELD== "EducationField_Medical":
+        EducationField_Medical=1
+    elif EDUCATION_FIELD== "EducationField_Other":
+        EducationField_Other=1 
+    elif EDUCATION_FIELD== "EducationField_TechnicalDegree":
+        EducationField_TechnicalDegree=1     
     
     GENDER = request.form['GENDER']
     Gender_Male=0
-    Gender_Female=0		
+    Gender_Female=0	
+    if GENDER == "MALE":
+        Gender_Male=1        
+    elif Gender == "FEMALE":
+        Gender_Female=1	
     
     
     JOBROLE = request.form['JOBROLE']
@@ -74,19 +99,51 @@ def predict():
     JobRole_ResearchScientist=0
     JobRole_SalesExecutive=0
     JobRole_SalesRepresentative=0
-    
+    if JOBROLE == "HUMAN_RESOURCE":
+        JobRole_HumanResources=1        
+    elif JOBROLE == "LAB_TECH":
+        JobRole_LaboratoryTechnician=1	
+    elif JOBROLE == "MANAGER":
+        JobRole_Manager=1	
+    elif JOBROLE == "MANUF_DIRECTOR":
+        JobRole_ManufacturingDirector=1
+    elif JOBROLE == "RESEARCH_DIRECTOR":
+        JobRole_ResearchDirector=1
+    elif JOBROLE == "RESEARCH_SCINTIST":
+        JobRole_ResearchScientist=1
+    elif JOBROLE == "SALES_EXEC":
+        JobRole_SalesExecutive=1
+    elif JOBROLE == "SALES_REP":
+        JobRole_SalesRepresentative=1        
+        
     MARITALSTATUS = request.form['MARITALSTATUS']
     MaritalStatus_Married=0
     MaritalStatus_Single=0
+    if MARITALSTATUS == "MaritalStatus_Single":
+        MaritalStatus_Married=1
+    elif MARITALSTATUS == "MaritalStatus_Married":
+        MaritalStatus_Single=1 
     
     OVERTIME = request.form['OVERTIME']
     OverTime_Yes=0
+    if OVERTIME == "1":
+        OverTime_Yes=1
+    elif OVERTIME == "0":
+        OverTime_Yes=0
     
     EDUCATION = request.form['EDUCATION']
     Education_2=0
     Education_3=0
     Education_4=0
     Education_5=0
+    if EDUCATION == "LIFE_SCIENCES":
+        Education_2=1
+    elif EDUCATION == "MARKETING":
+        Education_3=1
+    elif EDUCATION == "MEDICAL":
+        Education_4=1
+    elif EDUCATION == "TECHNICAL":
+        Education_5=1
     
     
     JOB_LEVEL = request.form['JOB_LEVEL']
@@ -94,11 +151,27 @@ def predict():
     JobLevel_3=0
     JobLevel_4=0
     JobLevel_5=0
+    if JOB_LEVEL == "0":
+        JobLevel_2=1
+    elif JOB_LEVEL == "1":
+        JobLevel_3=1
+    elif JOB_LEVEL == "2":
+        JobLevel_4=1
+    elif JOB_LEVEL == "3":
+        JobLevel_5=1
     
     JOB_SATISFACTION = request.form['JOB_SATISFACTION']
     JobSatisfaction_2=0
     JobSatisfaction_3=0
     JobSatisfaction_4=0
+    if JOB_SATISFACTION == "0":
+        JobSatisfaction_2=1
+    elif JOB_SATISFACTION == "1":
+        JobSatisfaction_3=1
+    elif JOB_SATISFACTION == "2":
+        JobSatisfaction_4=1
+    
+    
     
     COMPANIES_WROKED = request.form['COMPANIES_WROKED']
     NumCompaniesWorked_1=0
@@ -110,14 +183,58 @@ def predict():
     NumCompaniesWorked_7=0
     NumCompaniesWorked_8=0
     NumCompaniesWorked_9=0
+
+    if COMPANIES_WROKED == "1":
+        NumCompaniesWorked_1=1
+    elif COMPANIES_WROKED == "2":
+        NumCompaniesWorked_2=1
+    elif COMPANIES_WROKED == "3":
+        NumCompaniesWorked_3=1
+    elif COMPANIES_WROKED == "4":
+        NumCompaniesWorked_4=1
+    elif COMPANIES_WROKED == "5":
+        NumCompaniesWorked_5=1
+    elif COMPANIES_WROKED == "6":
+        NumCompaniesWorked_6=1
+    elif COMPANIES_WROKED == "7":
+        NumCompaniesWorked_7=1
+    elif COMPANIES_WROKED == "8":
+        NumCompaniesWorked_8=1
+    elif COMPANIES_WROKED == "9":
+        NumCompaniesWorked_9=1
     
     PERFORMANCE_RATE = request.form['PERFORMANCE_RATE']   
+    PerformanceRating_0=0
+    PerformanceRating_1=0
+    PerformanceRating_2=0
+    PerformanceRating_3=0
     PerformanceRating_4=0
+    if PERFORMANCE_RATE == "0":
+        PerformanceRating_0=0
+    elif PERFORMANCE_RATE == "1":
+        PerformanceRating_1=1
+    elif PERFORMANCE_RATE == "2":
+        PerformanceRating_2=1
+    elif PERFORMANCE_RATE == "3":
+        PerformanceRating_3=1
+        PerformanceRating_4=1
+    elif PERFORMANCE_RATE == "4":
+        PerformanceRating_4=1
     
     WORK_LIFE_BALANCE = request.form['WORK_LIFE_BALANCE'] 
+    WorkLifeBalance_1=0
     WorkLifeBalance_2=0
     WorkLifeBalance_3=0
     WorkLifeBalance_4=0
+    
+    if WORK_LIFE_BALANCE == "1":
+        WorkLifeBalance_1=1
+    elif WORK_LIFE_BALANCE == "2":
+        WorkLifeBalance_2=1
+    elif WORK_LIFE_BALANCE == "3":
+        WorkLifeBalance_3=1
+    elif WORK_LIFE_BALANCE == "4":
+        WorkLifeBalance_4=1
     
     YEARS_IN_CURRENT_ROLE = request.form['YEARS_IN_CURRENT_ROLE']
     YearsInCurrentRole_1=0
@@ -138,6 +255,24 @@ def predict():
     YearsInCurrentRole_16=0
     YearsInCurrentRole_17=0
     YearsInCurrentRole_18=0
+    if YEARS_IN_CURRENT_ROLE == "2":
+        YearsInCurrentRole_2=1
+    elif YEARS_IN_CURRENT_ROLE == "4":
+        YearsInCurrentRole_4=1
+    elif YEARS_IN_CURRENT_ROLE == "6":
+        YearsInCurrentRole_6=1
+    elif YEARS_IN_CURRENT_ROLE == "8":
+        YearsInCurrentRole_8=1
+    elif YEARS_IN_CURRENT_ROLE == "10":
+        YearsInCurrentRole_10=1
+    elif YEARS_IN_CURRENT_ROLE == "12":
+        YearsInCurrentRole_12=1
+    elif YEARS_IN_CURRENT_ROLE == "14":
+        YearsInCurrentRole_14=1
+    elif YEARS_IN_CURRENT_ROLE == "16":
+        YearsInCurrentRole_16=1
+    elif YEARS_IN_CURRENT_ROLE == "18":
+        YearsInCurrentRole_18=1
     
     YEARS_SINCE_LAST_PROMOTION = request.form['YEARS_SINCE_LAST_PROMOTION'] 
     YearsSinceLastPromotion_1=0
@@ -155,25 +290,21 @@ def predict():
     YearsSinceLastPromotion_13=0
     YearsSinceLastPromotion_14=0
     YearsSinceLastPromotion_15=0
+    if YEARS_SINCE_LAST_PROMOTION == "2":
+        YearsSinceLastPromotion_2=1
+    elif YEARS_SINCE_LAST_PROMOTION == "4":
+        YearsSinceLastPromotion_4=1
+    elif YEARS_SINCE_LAST_PROMOTION == "6":
+        YearsSinceLastPromotion_6=1
+    elif YEARS_SINCE_LAST_PROMOTION == "8":
+        YearsSinceLastPromotion_8=1
+    elif YEARS_SINCE_LAST_PROMOTION == "10":
+        YearsSinceLastPromotion_10=1
+    elif YEARS_SINCE_LAST_PROMOTION == "12":
+        YearsSinceLastPromotion_12=1
+    elif YEARS_SINCE_LAST_PROMOTION == "14":
+        YearsSinceLastPromotion_14=1    
     #end region continuous variables
-    
-    
-    
-    
-    
-    
-   
-    
-    
-    
-    
-   
-    
-       
-    
-    
-    
-        
     
     
     
@@ -183,10 +314,18 @@ def predict():
     #if input_features[0] <0 or input_features[0] >24:
      #   return render_template('home.html', prediction_text='Please enter valid hours between 1 to 24 if you live on the Earth')
         
-
+     
     #print("Here",features_value)
-    #scaler = pickle.load(open("scale.pickle","rb"))
-    #scaled = scaler.fit_transform(data[['MonthlyIncome','HourlyRate']])
+    scaler = pickle.load(open("std_scaler.pkl","rb"))
+    scaled = scaler.transform([[Age,DistanceFromHome, EMPLOYEE_ID,MonthlyIncome,TotalWorkingYears,YearsAtCompany]])
+    
+    Age = scaled[0][0].round(4)
+    DistanceFromHome = scaled[0][1].round(4)
+    MonthlyIncome = scaled[0][3].round(4)
+    TotalWorkingYears = scaled[0][4].round(4)
+    YearsAtCompany = scaled[0][5].round(4)
+        
+    
     features_value=[Age,DistanceFromHome,MonthlyIncome,TotalWorkingYears,YearsAtCompany,BusinessTravel_Travel_Frequently,
                     BusinessTravel_Travel_Rarely,Department_ResearchDevelopment,Department_Sales,EducationField_LifeSciences,
                     EducationField_Marketing,EducationField_Medical,EducationField_Other,EducationField_TechnicalDegree,
