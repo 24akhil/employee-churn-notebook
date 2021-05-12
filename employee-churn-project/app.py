@@ -48,11 +48,9 @@ def predict():
     BusinessTravel_Travel_Rarely=0
     BusinessTravel_Travel_Frequently=0
     if BUSINESSTRAVEL_TRAVEL== "FREQUENTLY":
-        BusinessTravel_Travel_Frequently=1
-        print(BUSINESSTRAVEL_TRAVEL)
+        BusinessTravel_Travel_Frequently=1        
     else:
         BusinessTravel_Travel_Rarely=1
-        print(BUSINESSTRAVEL_TRAVEL)
     
     
     DEPARTMENT = request.form['DEPARTMENT']  
@@ -84,9 +82,10 @@ def predict():
     GENDER = request.form['GENDER']
     Gender_Male=0
     Gender_Female=0	
+   
     if GENDER == "MALE":
         Gender_Male=1        
-    elif Gender == "FEMALE":
+    elif GENDER == "FEMALE":
         Gender_Female=1	
     
     
@@ -356,7 +355,7 @@ def predict():
     #df.to_csv('smp_data_from_app.csv')
 
     pred=""
-    if output[0]==0:
+    if output[0]==1:
         pred ='Employee may look for job change.'
     else:
         pred ='Employee may stay for longer association.'    
