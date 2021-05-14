@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
-import numpy as np
-import pandas as pd
-from flask import Flask, request, render_template
+#import numpy as np
+import os
+#import pandas as pd
+from flask import Flask, request, render_template, send_from_directory
 import joblib
 import pickle
 
@@ -13,15 +14,19 @@ model = joblib.load("Emp_attrition_prediction.pkl")
 
 
 
-df = pd.DataFrame()
+#df = pd.DataFrame()
 
-@app.route('/')
-def home():
-    return render_template('home.html')
+@app.route('/favicon.ico') 
+def Favicon(): 
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
+
+@app.route('/',methods=['GET'])
+def Home():
+    return render_template('index.html')
 
 @app.route('/predict',methods=['POST'])
-def predict():
-    global df
+def Predict():
+    #global df
     
     #input_features = [int(x) for x in request.form.values()]
     print(request.form)
@@ -360,9 +365,9 @@ def predict():
     else:
         pred ='Employee may stay for longer association.'    
     
-    return render_template('home.html', prediction_text='{}'.format(pred))
+    return render_template('index.html', prediction_text='{}'.format(pred))
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=8082)
-    
+    #app.run(debug=False)
+    app.run(host='0.0.0.0', port=80)    
